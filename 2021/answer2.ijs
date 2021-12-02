@@ -28,6 +28,9 @@ NB.   "words" is the first column, i.e. the words
 forwards =. *./"1 'forward' ="1 words
      ups =. *./"1 'up     ' ="1  words
    downs =. *./"1 'down   ' ="1  words
+NB.  Compare the string 'forward' to each of the words.
+NB.  You get all 1's if it's there, all 0's otherwise.
+NB.  AND-reduce that to get a single boolean for each row.
 NB.  "forwards" is a bit vector: 1 where the word was 'forward', else 0
 NB.  Similarly for "ups" and "downs"
 
