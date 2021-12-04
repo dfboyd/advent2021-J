@@ -107,3 +107,4 @@ i =: readfile < jpath '~/Downloads/input3.txt'
 ib =: getbits i
 
 (#. iter ib) * (#. iter2 ib)
+
