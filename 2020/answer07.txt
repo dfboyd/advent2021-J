@@ -1,0 +1,46 @@
+Our first goal here is to parse the ruleset into a matrix, like the
+ones you use for factorio production.
+
+Rules:
+
+    light red bags contain 1 bright white bag, 2 muted yellow bags.
+    dark orange bags contain 3 bright white bags, 4 muted yellow bags.
+    bright white bags contain 1 shiny gold bag.
+    muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
+    shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
+    dark olive bags contain 3 faded blue bags, 4 dotted black bags.
+    vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
+    faded blue bags contain no other bags.
+    dotted black bags contain no other bags.
+
+Parse this to get a list of bag types, and we number them:
+
+     0  light red
+     1  dark orange
+     2  bright white
+     3  muted yellow
+     4  shiny gold
+     5  dark olive
+     6  vibrant plum
+     7  faded blue
+     8  dotted black
+
+Now I think we make a matrix.  The first rule:
+
+    light red bags contain 1 bright white bag, 2 muted yellow bags.
+
+    bag   0  1  2  3  4  5  6  7
+
+    rule  1  0 _1 _2  0  0  0  0
+
+...no, we need an adjacency matrix instead, because we're going to
+complete the graph downstream by taking powers of the matrix.
+
+    bag   0  1  2  3  4  5  6  7  8
+    0	  1  0  1  2  0  0  0  0  0
+    1     0  1  3  4  0  0  0  0  0
+    2     0  0  0  0  1  0  0  0  0
+    3     0  0  0  0  2  0  0  9  0
+    etc.
+
+
